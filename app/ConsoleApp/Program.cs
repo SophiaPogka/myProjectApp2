@@ -14,6 +14,7 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World2!");
 
             var configuration = new ConfigurationBuilder()
             .SetBasePath($"{AppDomain.CurrentDomain.BaseDirectory}")
