@@ -46,6 +46,14 @@ namespace myProjectApp.api.Controllers
             return Json(customer);
         }
 
+        [HttpGet("{custid:int}/account/{accountId:int}")]
+        public IActionResult GetAcountByCustomerId(int custid, int accountId)
+        {
+            var customer = _customers.GetAccountByCustomerId(custid, accountId);
+
+            return Json(customer);
+        }
+
 
         //[HttpPost]
         //public IActionResult RegisterCustomer(

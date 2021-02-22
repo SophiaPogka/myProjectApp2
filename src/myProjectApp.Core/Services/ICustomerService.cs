@@ -12,5 +12,7 @@ namespace myProjectApp.Core.Services
         public List<Customer> GetAllCustomers();
 
         public Customer RegisterCustomerAndAccount(RegisterCustomerOptions optionsCust, RegisterAccountOptions optionsAcc);
+
+        public Customer GetAccountByCustomerId(int customerId, int accountId);
     }
 }

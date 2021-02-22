@@ -1,4 +1,5 @@
-﻿using myProjectApp.Core.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using myProjectApp.Core.Data;
 using myProjectApp.Core.Model;
 using myProjectApp.Core.Services.Options;
 using System.Collections.Generic;
@@ -90,15 +91,25 @@ namespace myProjectApp.Core.Services
                 .Where(c => c.CustomerId == customerId)
                 .SingleOrDefault();
 
-        return cust;
+            return cust;
         }
 
         public List<Customer> GetAllCustomers()
         {
-            var custList = _cust_DBContext.Set<Customer>()
+            List<Customer> custList = _cust_DBContext.Set<Customer>()
+                .Include(c => c.Accounts)
                 .ToList();
-
             return custList;
+        }
+
+        public Customer GetAccountByCustomerId(int customerId, int accountId)
+        {
+            var cust = _cust_DBContext.Set<Customer>()
+                .Where(c => c.CustomerId == customerId)
+                .Include(e => e.Accounts)
+                .SingleOrDefault();
+
+            return cust;
         }
     }
 }
